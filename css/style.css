@@ -1,3 +1,86 @@
 body {
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+	user-select: none;
+	background-color: #fff;
+}
 
+.container {
+	max-width: 90%;
+	margin: 0px auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.card {
+	width: 60%;
+	padding: 12px;
+	box-sizing: border-box;
+	margin: 0px auto;
+	border: 1px solid #eee;
+	box-shadow: 4px 4px 12px 0px rgba(0,0,0,.18);
+}
+
+.group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 16px;
+}
+
+.group input {
+	flex-basis: 46%;
+	border: none;
+	outline: none;
+	border-bottom: 2px solid #808080;
+	padding: 8px 6px;
+	box-sizing: border-box;
+	font-size: 110%;
+}
+
+.seperator {
+	border-bottom: 2px solid #808080;
+	margin-top: 30px;
+}
+
+.error {
+	text-align: center;
+	padding: 10px 0px;
+	color: red;
+}
+
+#result {
+	display: flex;
+	margin: 20px 0px;
+	text-align: center;
+}
+
+#result div {
+	flex: 1;
+	font-size: 180%;
+}
+
+.btn-container {
+
+}
+
+a {
+	text-decoration: none;
+}
+
+.btn-container #btn {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 10px 0px;
+	font-size: 120%;
+	color: #fff;
+	background-color: #009688;
+}
+
+.btn-container #btn:hover {
+	background-color: #00796b;
+	cursor: pointer;
 }

@@ -11,6 +11,31 @@
 
 <body>
 
+	<div class="container">
+		<header>
+			<h2 class="text-center">Countdown Timer</h2>
+		</header>
+	</div>
+	
+	<div class="container">
+		<div class="card">
+			<div class="group">
+				<input type="text" id="min-input" placeholder="Enter minutes" required/>
+				<input type="text" id="sec-input" placeholder="Enter seconds" required/>
+			</div>
+			<div class="error"></div>
+			<div class="btn-container"><button id="btn">Start Timer</button></div>
+			<div class="seperator"></div>
+			<div id="result" class="default">
+				<div id="min">10 Minutes</div><div id="sec">20 Seconds</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer>
+		<p class="text-center">Project by <a href="http://fb.com/raajnadar" target="_blank">Rajendran Nadar</a> | Fork project on github</p>
+	</footer>
+
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
 </body>
