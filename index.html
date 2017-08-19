@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>Countdown Timer</title>
 	<link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,15 +19,38 @@
 	
 	<div class="container">
 		<div class="card">
+			<p class="text-center">Form to update time</p>
 			<div class="group">
 				<input type="text" id="min-input" placeholder="Enter minutes" required/>
 				<input type="text" id="sec-input" placeholder="Enter seconds" required/>
 			</div>
 			<div class="error"></div>
-			<div class="btn-container"><button id="btn">Start Timer</button></div>
-			<div class="seperator"></div>
+			<div class="btn-container"><button id="btn" class="btn">Start Timer</button></div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="card" style="position: relative;">
 			<div id="result" class="default">
-				<div id="min">10 Minutes</div><div id="sec">20 Seconds</div>
+				<div>
+					<div id="min">0</div>
+					<div>Minutes</div>
+				</div>
+				<div>
+					<div id="sec">13</div>
+					<div>Seconds</div>
+				</div>
+			</div>
+			<div id="stop"><p></p></div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="card">
+			<div class="btn-control">
+				<button class="btn btn-green">Start</button>
+				<button class="btn btn-red">Stop</button>
+				<button class="btn btn-yellow">Pause</button>
 			</div>
 		</div>
 	</div>
