@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-	max-width: 90%;
+	max-width: 98%;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 20px;
@@ -22,7 +22,7 @@ body {
 }
 
 .card {
-	width: 60%;
+	width: 92%;
 	padding: 12px;
 	box-sizing: border-box;
 	margin: 0px auto;
@@ -31,13 +31,10 @@ body {
 }
 
 .group {
-	display: flex;
 	justify-content: space-between;
-	margin-bottom: 16px;
 }
 
 .group input {
-	flex-basis: 46%;
 	border: none;
 	outline: none;
 	border-bottom: 2px solid #808080;
@@ -53,7 +50,6 @@ body {
 }
 
 #result {
-	display: flex;
 	margin: 20px 0px;
 	text-align: center;
 }
@@ -126,4 +122,53 @@ a {
 
 .btn-yellow {
 	background-color: #ffc107;
+}
+
+/* Responsive Media query */
+
+@media only screen and (max-width: 425px) {
+	.container {
+		max-width: 98%;
+	}
+	
+	.card {
+		width: 90%;
+	}
+	
+	.btn-control button {
+		flex: 1;
+	}
+	
+	.group input {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	.group input:last-child {
+		margin-bottom: 0px;
+	}
+}
+
+@media only screen and (min-width: 426px ) and (max-width: 768px) {
+	.group {
+		display: flex;
+	}
+	
+	.group input {
+		flex-basis: 48%;
+	}
+}
+
+@media only screen and (min-width: 769px) {
+	.group {
+		display: flex;
+	}
+	
+	.group input {
+		flex-basis: 48%;
+	}
+	
+	#result {
+		display: flex;
+	}
 }
