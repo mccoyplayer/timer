@@ -3,10 +3,9 @@ Advanced countdown timer.
 
 [Working Demo link here](http://raajnadar.github.io/CountdownTimer)
 
-## Features <br />
-* Initial rlease
+## Features  
+* Build with flexbox (Responsive)
 
 To Do list:
-* UI Designing
 * Start/Restart/Pause/Stop control button
 * Timer with Animation
