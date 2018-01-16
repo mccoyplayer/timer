@@ -1,61 +1,55 @@
-$(document).ready(function() {
-	var min = $('#min').text(), sec = $('#sec').text();
+document.onreadystatechange = function () {
+	var stopMsg = document.querySelector('#stop p');
 
+	/*
+	* Main counting function
+	*/
 	function count() {
 		var count = setInterval(function () {
-			if ( min != 0 || sec != 0) {
-				if ( sec == 0) {
-					sec = 59;
-					min--;
-					if (min < 10) {
-						min = '0'+min;
+			var min = document.querySelector('#min');
+			var sec = document.querySelector('#sec');
+
+			var minVal = min.innerHTML, secVal = sec.innerHTML;
+			if ( minVal != 0 || secVal != 0) {
+				if ( secVal == 0) {
+					secVal = 59;
+					minVal--;
+					if (minVal < 10) {
+						minVal = '0' + minVal;
 					}
-					$('#min').html(min);
-					$('#sec').html(sec);
+					min.innerHTML = minVal;
+					sec.innerHTML = secVal;
 				} else {
-					sec--;
-					if (sec < 10) {
-						sec = '0'+sec;
+					secVal--;
+					if (secVal < 10) {
+						secVal = '0' + secVal;
 					}
-					$('#sec').html(sec);
+					sec.innerHTML = secVal;
 				}
 			} else {
-				$('#stop p').append('Time over!').addClass('stopped')
-				$('#stop').animate({
-					'opacity' : 1,
-				}, 1000);
+				stopMsg.innerHTML = 'Time over!';
+				stopMsg.classList.add('stopped');
 				clearInterval(count);
+				fadeIn(stopMsg.parentNode);
 			}
 		}, 1000);
 	}
-	
-	if ( !$('#stop p').hasClass('stopped') ) {
-		count();
-	}
-	
-	/* function clearError() {
-		if ( $('.error').hasClass('error-on') ) {
-			setInterval(function() {
-				$('.error').empty();
-				$('.error').removeClass('error-on');
-			}, 4000);
-		}
+
+	function fadeIn(element) {
+		element.style.opacity = 0;
+
+		(function fade() {
+			var val = parseFloat(element.style.opacity);
+			if (!((val += 0.1) > 1)) {
+				element.style.opacity = val;
+				requestAnimationFrame(fade);
+			}
+		}());
 	}
 
-	$("#btn").on('click', function() {
-		var minInput = $('#min-input').val(), secInput = $('#sec-input').val();
-		
-		if ( minInput <= 0 || secInput <= 0 || minInput > 60 || secInput > 60 ) {
-			$('.error').append('Enter valid timer values').addClass('error-on');
-			clearError();
-		} else {
-			MinArray[0] = minInput;
-			SecArray[0] = secInput;
-			
-			if ( $('#result').hasClass('default') ) {
-				$('#result').removeClass('deafult');
-			}
+	if (document.readyState === 'complete') {
+		if ( !stopMsg.classList.contains('stopped') ) {
+			count();
 		}
-	}); */
-	
-});
+	}
+};
