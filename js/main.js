@@ -9,6 +9,10 @@ document.onreadystatechange = function () {
 			var min = document.querySelector('#min');
 			var sec = document.querySelector('#sec');
 
+			if ( stopMsg.classList.contains('paused') ) {
+				return false;
+			}
+
 			var minVal = min.innerHTML, secVal = sec.innerHTML;
 			if ( minVal != 0 || secVal != 0) {
 				if ( secVal == 0) {
@@ -58,8 +62,13 @@ document.onreadystatechange = function () {
 	}
 
 	if (document.readyState === 'complete') {
+		/*
+		*	Initialized necessary variables
+		*/
 		var stopMsg = document.querySelector('#stop p');
 		var stopBtn = document.querySelector('.stop-btn');
+		var pauseBtn = document.querySelector('.pause-btn');
+		var startBtn = document.querySelector('.start-btn');
 
 		if ( !stopMsg.classList.contains('stopped') ) {
 			count();
@@ -67,6 +76,18 @@ document.onreadystatechange = function () {
 
 		stopBtn.addEventListener('click', function() {
 			stop();
+		});
+
+		pauseBtn.addEventListener('click', function() {
+			if ( !stopMsg.classList.contains('paused') && !stopMsg.classList.contains('stopped') ) {
+				stopMsg.classList.add('paused');
+			}
+		});
+
+		startBtn.addEventListener('click', function() {
+			if ( stopMsg.classList.contains('paused') ) {
+				stopMsg.classList.remove('paused');
+			}
 		});
 	}
 };
