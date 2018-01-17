@@ -1,5 +1,4 @@
 document.onreadystatechange = function () {
-	var stopMsg = document.querySelector('#stop p');
 
 	/*
 	* Main counting function
@@ -48,8 +47,15 @@ document.onreadystatechange = function () {
 	}
 
 	if (document.readyState === 'complete') {
+		var stopMsg = document.querySelector('#stop p');
+		var stopBtn = document.querySelector('.stop-btn');
+
 		if ( !stopMsg.classList.contains('stopped') ) {
 			count();
 		}
+
+		stopBtn.addEventListener('click', function() {
+			console.log("hie");
+		});
 	}
 };
