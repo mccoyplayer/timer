@@ -1,10 +1,11 @@
 document.onreadystatechange = function () {
+	var count;
 
 	/*
 	* Main counting function
 	*/
 	function count() {
-		var count = setInterval(function () {
+		count = setInterval(function () {
 			var min = document.querySelector('#min');
 			var sec = document.querySelector('#sec');
 
@@ -26,14 +27,24 @@ document.onreadystatechange = function () {
 					sec.innerHTML = secVal;
 				}
 			} else {
-				stopMsg.innerHTML = 'Time over!';
-				stopMsg.classList.add('stopped');
-				clearInterval(count);
-				fadeIn(stopMsg.parentNode);
+				stop();
 			}
 		}, 1000);
 	}
 
+	/*
+	*	User stopping functionality
+	*/
+	function stop() {
+		stopMsg.innerHTML = 'Time over!';
+		stopMsg.classList.add('stopped');
+		clearInterval(count);
+		fadeIn(stopMsg.parentNode);
+	}
+
+	/*
+	*	Fading script for stop message
+	*/
 	function fadeIn(element) {
 		element.style.opacity = 0;
 
@@ -55,7 +66,7 @@ document.onreadystatechange = function () {
 		}
 
 		stopBtn.addEventListener('click', function() {
-			console.log("hie");
+			stop();
 		});
 	}
 };
