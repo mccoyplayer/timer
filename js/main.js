@@ -75,7 +75,9 @@ document.onreadystatechange = function () {
 		}
 
 		stopBtn.addEventListener('click', function() {
-			stop();
+			if ( !stopMsg.classList.contains('stopped') ) {
+				stop();
+			}
 		});
 
 		pauseBtn.addEventListener('click', function() {
