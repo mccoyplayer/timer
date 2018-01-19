@@ -1,11 +1,15 @@
 # Countdown Timer
-Advanced countdown timer.
+Advanced countdown timer that can be used in web pages Build with vanilla JavaScript.
 
-[Working Demo link here](http://raajnadar.github.io/CountdownTimer)
+[Working Demo](http://raajnadar.github.io/CountdownTimer)
 
 ## Features  
-* Build with flexbox (Responsive)
+* Build with flex-box (Responsive works on all screen size)
+* Start / Stop / Pause button
+* Stop with smooth animation
 
-To Do list:
-* Start/Restart/Pause/Stop control button
-* Timer with Animation
+## To-do list
+* Dynamic timer value
+
+## Author
+Project Lead - [Rajendran Nadar](https://facebook.com/raajnadar)
