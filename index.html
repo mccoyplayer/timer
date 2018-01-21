@@ -7,10 +7,10 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<title>Countdown Timer</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/timer.css">
 </head>
 
 <body>
-
 	<div class="container">
 		<header>
 			<h2 class="text-center">Countdown Timer</h2>
@@ -18,28 +18,27 @@
 	</div>
 
 	<div class="container">
+		<h1 class="title">Live Demo</h1>
 		<div class="card" style="position: relative;">
-			<div id="result" class="default">
-				<div class="min-container">
-					<div id="min">01</div>
+			<div id="ct--result">
+				<div class="ct--min-container">
+					<div id="ct--min">01</div>
 					<div>Minutes</div>
 				</div>
-				<div class="sec-container">
-					<div id="sec">11</div>
+				<div class="ct--sec-container">
+					<div id="ct--sec">11</div>
 					<div>Seconds</div>
 				</div>
 			</div>
-			<div id="stop"><p></p></div>
+			<div id="ct--stop"><p></p></div>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="card">
-			<div class="btn-control">
-				<button class="btn btn-green start-btn">Start</button>
-				<button class="btn btn-red stop-btn">Stop</button>
-				<button class="btn btn-yellow pause-btn">Pause</button>
-			</div>
+		<div class="ct--btn-control">
+			<button class="ct--btn ct--start-btn">Start</button>
+			<button class="ct--btn ct--stop-btn">Stop</button>
+			<button class="ct--btn ct--pause-btn">Pause</button>
 		</div>
 	</div>
 
@@ -47,6 +46,6 @@
 		<p class="text-center">Designed and developed by <a href="http://fb.com/raajnadar" target="_blank">Rajendran Nadar</a></p>
 	</footer>
 
-	<script type="text/javascript" src="js/main.js"></script>
+	<script type="text/javascript" src="js/timer.js"></script>
 </body>
 </html>

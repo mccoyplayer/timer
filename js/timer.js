@@ -1,3 +1,10 @@
+/**
+ * countdown-timer - Countdown Timer build with CSS, JS and HTML
+ * @version v1.0.0
+ * @license MIT
+ * @link https://github.com/raajnadar/countdown-timer
+ */
+
 document.onreadystatechange = function () {
 	var count;
 
@@ -6,10 +13,10 @@ document.onreadystatechange = function () {
 	*/
 	function count() {
 		count = setInterval(function () {
-			var min = document.querySelector('#min');
-			var sec = document.querySelector('#sec');
+			var min = document.querySelector('#ct--min');
+			var sec = document.querySelector('#ct--sec');
 
-			if ( stopMsg.classList.contains('paused') ) {
+			if ( stopMsg.classList.contains('ct--paused') ) {
 				return false;
 			}
 
@@ -41,13 +48,13 @@ document.onreadystatechange = function () {
 	*/
 	function stop() {
 		stopMsg.innerHTML = 'Time over!';
-		stopMsg.classList.add('stopped');
+		stopMsg.classList.add('ct--stopped');
 		clearInterval(count);
 		fadeIn(stopMsg.parentNode);
 	}
 
 	/*
-	*	Fading script for stop message
+	*	Animate the stop message
 	*/
 	function fadeIn(element) {
 		element.style.opacity = 0;
@@ -65,30 +72,30 @@ document.onreadystatechange = function () {
 		/*
 		*	Initialized necessary variables
 		*/
-		var stopMsg = document.querySelector('#stop p');
-		var stopBtn = document.querySelector('.stop-btn');
-		var pauseBtn = document.querySelector('.pause-btn');
-		var startBtn = document.querySelector('.start-btn');
+		var stopMsg = document.querySelector('#ct--stop p');
+		var stopBtn = document.querySelector('.ct--stop-btn');
+		var pauseBtn = document.querySelector('.ct--pause-btn');
+		var startBtn = document.querySelector('.ct--start-btn');
 
-		if ( !stopMsg.classList.contains('stopped') ) {
+		if ( !stopMsg.classList.contains('ct--stopped') ) {
 			count();
 		}
 
 		stopBtn.addEventListener('click', function() {
-			if ( !stopMsg.classList.contains('stopped') ) {
+			if ( !stopMsg.classList.contains('ct--stopped') ) {
 				stop();
 			}
 		});
 
 		pauseBtn.addEventListener('click', function() {
-			if ( !stopMsg.classList.contains('paused') && !stopMsg.classList.contains('stopped') ) {
-				stopMsg.classList.add('paused');
+			if ( !stopMsg.classList.contains('ct--paused') && !stopMsg.classList.contains('ct--stopped') ) {
+				stopMsg.classList.add('ct--paused');
 			}
 		});
 
 		startBtn.addEventListener('click', function() {
-			if ( stopMsg.classList.contains('paused') ) {
-				stopMsg.classList.remove('paused');
+			if ( stopMsg.classList.contains('ct--paused') ) {
+				stopMsg.classList.remove('ct--paused');
 			}
 		});
 	}

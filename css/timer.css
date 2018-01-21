@@ -1,0 +1,73 @@
+/**
+ * countdown-timer - Countdown Timer build with CSS, JS and HTML
+ * @version v1.0.0
+ * @license MIT
+ * @link https://github.com/raajnadar/countdown-timer
+ */
+
+/* Container styling */
+.ct--min-container, .ct--sec-container {
+	padding: 10px;
+}
+
+/* Result value stying */
+#ct--result {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+#ct--result div {
+	flex: 1;
+	font-size: 180%;
+}
+
+/* Stop message styling */
+#ct--stop {
+	background-color: #ef5350;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display: flex;
+	opacity: 0;
+}
+
+#ct--stop p {
+	margin: auto;
+	color: #fff;
+	font-size: 130%;
+}
+
+/* Control button styling */
+.ct--btn-control {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.ct--btn-control button {
+	flex: 1;
+}
+
+.ct--btn {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	padding: 10px 0px;
+	font-size: 120%;
+	color: #fff;
+}
+
+.ct--stop-btn {
+	background-color: #ef5350;
+}
+
+.ct--start-btn {
+	background-color: #009688;
+}
+
+.ct--pause-btn {
+	background-color: #ffc107;
+}
