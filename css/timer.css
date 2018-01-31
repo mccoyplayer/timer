@@ -6,6 +6,10 @@
  */
 
 /* Container styling */
+.ct--container-main {
+	position: relative;
+}
+
 .ct--min-container, .ct--sec-container {
 	padding: 10px;
 }
@@ -70,4 +74,41 @@
 
 .ct--pause-btn {
 	background-color: #ffc107;
+}
+
+/* Updater styling */
+.ct--container-update {
+	text-align: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.ct--update-group {
+	flex-basis: 48%;
+}
+
+.ct--container-update input {
+	width: 100%;
+	margin: 10px 0px;
+	padding: 10px 0px;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.ct--update-btn {
+	outline: none;
+	border: none;
+	padding: 10px 16px;
+	background: #1976d2;
+	color: #fff;
+	border-radius: 8px;
+	margin: 10px 0px;
+}
+
+/* Styling for laptop and larger screen device */
+@media (min-width: 768px) {
+	.ct--container-update {
+		display: flex;
+		max-width: 50%;
+	}
 }
