@@ -105,6 +105,22 @@ document.onreadystatechange = function () {
 		}());
 	}
 
+	function showAlert(msg) {
+		var errorContainer = document.querySelector('.ct--update-error');
+
+		if (errorContainer.innerHTML == '') {
+			errorContainer.innerHTML = '<div class="ct--update-error-alert">' + msg + '</div>';
+		}
+
+		setTimeout(hideAlert, 3000);
+	}
+
+	function hideAlert() {
+		var errorContainer = document.querySelector('.ct--update-error');
+
+		errorContainer.innerHTML = '';
+	}
+
 	if (document.readyState === 'complete') {
 		/*
 		*	Initialized necessary variables after page load
@@ -140,6 +156,53 @@ document.onreadystatechange = function () {
 			if ( stopMsg.classList.contains('ct--paused') ) {
 				stopMsg.classList.remove('ct--paused');
 			}
+		});
+
+		/*
+		*	Dynamic update
+		*/
+		var updateBtn = document.querySelector('.ct--update-btn');
+
+		updateBtn.addEventListener('click', function() {
+			var dynMin = document.querySelector('.ct--update-min');
+			var dynSec = document.querySelector('.ct--update-sec');
+			var min = document.querySelector('#ct--min');
+			var sec = document.querySelector('#ct--sec');
+
+			if ( !Number.isInteger(parseInt(dynMin.value)) || !Number.isInteger(parseInt(dynSec.value))) {
+				showAlert('Enter a valid number!');
+				return 0;
+			}
+
+			if (parseInt(dynMin.value) > 60 || parseInt(dynSec.value) > 60) {
+				showAlert('Minutes/seconds cannot be more than 60!');
+				return 0;
+			}
+
+			if (parseInt(dynMin.value) < 0 || parseInt(dynSec.value) < 0) {
+				showAlert('Minutes/seconds cannot be lesser than 0!');
+				return 0;
+			}
+
+			if ( stopMsg.classList.contains('ct--stopped') ) {
+				showAlert('Timer is already stopped!');
+				return 0;
+			}
+
+			if ( dynMin.value < 10 ) {
+				min.innerHTML = "0" + dynMin.value;
+			} else {
+				min.innerHTML = dynMin.value;
+			}
+
+			if (dynSec.value < 10) {
+				sec.innerHTML = "0" + dynSec.value;
+			} else {
+				sec.innerHTML = dynSec.value;
+			}
+
+			dynMin.value = '';
+			dynSec.value = '';
 		});
 	}
 };

@@ -90,7 +90,7 @@
 .ct--container-update input {
 	width: 100%;
 	margin: 10px 0px;
-	padding: 10px 0px;
+	padding: 10px;
 	box-sizing: border-box;
 	outline: none;
 }
@@ -103,6 +103,20 @@
 	color: #fff;
 	border-radius: 8px;
 	margin: 10px 0px;
+	cursor: pointer;
+}
+
+/* Error styling */
+.ct--update-error {
+	width: 100%;
+}
+
+.ct--update-error-alert {
+	background-color: #f4511e;
+	color: #fff;
+	padding: 10px;
+	text-align: left;
+	border-left: 4px solid #c62828;
 }
 
 /* Styling for laptop and larger screen device */
