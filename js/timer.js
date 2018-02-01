@@ -13,6 +13,8 @@ document.onreadystatechange = function () {
 	*/
 	function count() {
 		count = setInterval(function () {
+			var day = document.querySelector('#ct--day');
+			var hour = document.querySelector('#ct--hour');
 			var min = document.querySelector('#ct--min');
 			var sec = document.querySelector('#ct--sec');
 
@@ -20,14 +22,23 @@ document.onreadystatechange = function () {
 				return false;
 			}
 
-			var minVal = min.innerHTML, secVal = sec.innerHTML;
-			if ( minVal != 0 || secVal != 0) {
+			var dayVal = day.innerHTML, hourVal = hour.innerHTML, minVal = min.innerHTML, secVal = sec.innerHTML;
+			if ( hourVal != 0 || minVal != 0 || secVal != 0) {
 				if ( secVal == 0) {
 					secVal = 59;
-					minVal--;
+					if ( minVal > 0 ) {
+						minVal--;
+					} else {
+						minVal = 59;
+						hourVal--;
+						if (hourVal < 10) {
+							hourVal = '0' + hourVal;
+						}
+					}
 					if (minVal < 10) {
 						minVal = '0' + minVal;
 					}
+					hour.innerHTML = hourVal;
 					min.innerHTML = minVal;
 					sec.innerHTML = secVal;
 				} else {
