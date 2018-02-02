@@ -23,21 +23,30 @@ document.onreadystatechange = function () {
 			}
 
 			var dayVal = day.innerHTML, hourVal = hour.innerHTML, minVal = min.innerHTML, secVal = sec.innerHTML;
-			if ( hourVal != 0 || minVal != 0 || secVal != 0) {
+			if (  dayVal != 0 || hourVal != 0 || minVal != 0 || secVal != 0) {
 				if ( secVal == 0) {
 					secVal = 59;
 					if ( minVal > 0 ) {
 						minVal--;
 					} else {
 						minVal = 59;
-						hourVal--;
-						if (hourVal < 10) {
-							hourVal = '0' + hourVal;
+						if (hourVal > 0) {
+							hourVal--;
+							if (hourVal < 10) {
+								hourVal = '0' + hourVal;
+							}
+						} else {
+							hourVal = 23;
+							dayVal--;
+							if (dayVal < 10) {
+								dayVal = '0' + dayVal;
+							}
 						}
 					}
 					if (minVal < 10) {
 						minVal = '0' + minVal;
 					}
+					day.innerHTML = dayVal;
 					hour.innerHTML = hourVal;
 					min.innerHTML = minVal;
 					sec.innerHTML = secVal;
