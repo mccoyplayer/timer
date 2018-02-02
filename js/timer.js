@@ -18,6 +18,11 @@ document.onreadystatechange = function () {
 			var min = document.querySelector('#ct--min');
 			var sec = document.querySelector('#ct--sec');
 
+			var dayTag = document.querySelector('.ct--day');
+			var hourTag = document.querySelector('.ct--hour');
+			var minTag = document.querySelector('.ct--min');
+			var secTag = document.querySelector('.ct--sec');
+
 			if ( stopMsg.classList.contains('ct--paused') ) {
 				return false;
 			}
@@ -34,17 +39,32 @@ document.onreadystatechange = function () {
 							hourVal--;
 							if (hourVal < 10) {
 								hourVal = '0' + hourVal;
+								if (hourVal == 1) {
+									hourTag.innerHTML = 'Hour';
+								} else {
+									hourTag.innerHTML = 'Hours';
+								}
 							}
 						} else {
 							hourVal = 23;
 							dayVal--;
 							if (dayVal < 10) {
 								dayVal = '0' + dayVal;
+								if (dayVal == 1) {
+									dayTag.innerHTML = 'Day';
+								} else {
+									dayTag.innerHTML = 'Days';
+								}
 							}
 						}
 					}
 					if (minVal < 10) {
 						minVal = '0' + minVal;
+						if (minVal == 1) {
+							minTag.innerHTML = 'Minute';
+						} else {
+							minTag.innerHTML = 'Minutes';
+						}
 					}
 					day.innerHTML = dayVal;
 					hour.innerHTML = hourVal;
@@ -54,6 +74,11 @@ document.onreadystatechange = function () {
 					secVal--;
 					if (secVal < 10) {
 						secVal = '0' + secVal;
+						if (secVal == 1) {
+							secTag.innerHTML = 'Second';
+						} else {
+							secTag.innerHTML = 'Seconds';
+						}
 					}
 					sec.innerHTML = secVal;
 				}
