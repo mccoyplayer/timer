@@ -1,33 +1,44 @@
 /**
  * countdown-timer - Countdown Timer build with CSS, JS and HTML
- * @version v1.0.0
+ * @version v1.0.1
  * @license MIT
  * @link https://github.com/raajnadar/countdown-timer
  */
 
 document.onreadystatechange = function () {
-	var count;
+	/*
+	*	Initialized necessary variables before page load
+	*/
+	var count, day, hour, min, sec, dayTag, hourTag, minTag, secTag;
+	var dayVal, hourVal, minVal, secVal;
 
 	/*
-	* Main counting function
+	*	Main counting function
 	*/
 	function count() {
 		count = setInterval(function () {
-			var day = document.querySelector('#ct--day');
-			var hour = document.querySelector('#ct--hour');
-			var min = document.querySelector('#ct--min');
-			var sec = document.querySelector('#ct--sec');
+			day = document.querySelector('#ct--day');
+			hour = document.querySelector('#ct--hour');
+			min = document.querySelector('#ct--min');
+			sec = document.querySelector('#ct--sec');
 
-			var dayTag = document.querySelector('.ct--day');
-			var hourTag = document.querySelector('.ct--hour');
-			var minTag = document.querySelector('.ct--min');
-			var secTag = document.querySelector('.ct--sec');
+			dayTag = document.querySelector('.ct--day');
+			hourTag = document.querySelector('.ct--hour');
+			minTag = document.querySelector('.ct--min');
+			secTag = document.querySelector('.ct--sec');
 
 			if ( stopMsg.classList.contains('ct--paused') ) {
 				return false;
 			}
 
-			var dayVal = day.innerHTML, hourVal = hour.innerHTML, minVal = min.innerHTML, secVal = sec.innerHTML;
+			/*
+			*	Values to count
+			*/
+			dayVal = day.innerHTML;
+			hourVal = hour.innerHTML;
+			minVal = min.innerHTML;
+			secVal = sec.innerHTML;
+
 			if (  dayVal != 0 || hourVal != 0 || minVal != 0 || secVal != 0) {
 				if ( secVal == 0) {
 					secVal = 59;
@@ -39,32 +50,17 @@ document.onreadystatechange = function () {
 							hourVal--;
 							if (hourVal < 10) {
 								hourVal = '0' + hourVal;
-								if (hourVal == 1) {
-									hourTag.innerHTML = 'Hour';
-								} else {
-									hourTag.innerHTML = 'Hours';
-								}
 							}
 						} else {
 							hourVal = 23;
 							dayVal--;
 							if (dayVal < 10) {
 								dayVal = '0' + dayVal;
-								if (dayVal == 1) {
-									dayTag.innerHTML = 'Day';
-								} else {
-									dayTag.innerHTML = 'Days';
-								}
 							}
 						}
 					}
 					if (minVal < 10) {
 						minVal = '0' + minVal;
-						if (minVal == 1) {
-							minTag.innerHTML = 'Minute';
-						} else {
-							minTag.innerHTML = 'Minutes';
-						}
 					}
 					day.innerHTML = dayVal;
 					hour.innerHTML = hourVal;
@@ -74,11 +70,6 @@ document.onreadystatechange = function () {
 					secVal--;
 					if (secVal < 10) {
 						secVal = '0' + secVal;
-						if (secVal == 1) {
-							secTag.innerHTML = 'Second';
-						} else {
-							secTag.innerHTML = 'Seconds';
-						}
 					}
 					sec.innerHTML = secVal;
 				}
@@ -89,11 +80,12 @@ document.onreadystatechange = function () {
 	}
 
 	/*
-	*	User stopping functionality
+	*	Auto stop and User stopping functionality
 	*/
 	function stop() {
 		stopMsg.innerHTML = 'Time over!';
 		stopMsg.classList.add('ct--stopped');
+		day.innerHTML = hour.innerHTML = min.innerHTML = sec.innerHTML = "00";
 		clearInterval(count);
 		fadeIn(stopMsg.parentNode);
 	}
@@ -115,17 +107,23 @@ document.onreadystatechange = function () {
 
 	if (document.readyState === 'complete') {
 		/*
-		*	Initialized necessary variables
+		*	Initialized necessary variables after page load
 		*/
 		var stopMsg = document.querySelector('#ct--stop p');
 		var stopBtn = document.querySelector('.ct--stop-btn');
 		var pauseBtn = document.querySelector('.ct--pause-btn');
 		var startBtn = document.querySelector('.ct--start-btn');
 
+		/*
+		*	Count until a stop class is added to the element
+		*/
 		if ( !stopMsg.classList.contains('ct--stopped') ) {
 			count();
 		}
 
+		/*
+		*	Start/Stop/Pause functionality
+		*/
 		stopBtn.addEventListener('click', function() {
 			if ( !stopMsg.classList.contains('ct--stopped') ) {
 				stop();
