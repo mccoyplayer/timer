@@ -81,10 +81,14 @@
 	text-align: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
+	margin-left: -10px;
+	margin-right: -10px;
 }
 
 .ct--update-group {
-	flex-basis: 48%;
+	flex: 1 25%;
+	padding: 0px 10px;
+	box-sizing: border-box;
 }
 
 .ct--container-update input {
@@ -117,12 +121,12 @@
 	padding: 10px;
 	text-align: left;
 	border-left: 4px solid #c62828;
+	margin: 0px 10px;
 }
 
 /* Styling for laptop and larger screen device */
 @media (min-width: 768px) {
 	.ct--container-update {
 		display: flex;
-		max-width: 50%;
 	}
 }

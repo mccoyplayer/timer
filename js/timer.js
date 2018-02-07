@@ -164,13 +164,23 @@ document.onreadystatechange = function () {
 		var updateBtn = document.querySelector('.ct--update-btn');
 
 		updateBtn.addEventListener('click', function() {
+			var dynDay = document.querySelector('.ct--update-day');
+			var dynHour = document.querySelector('.ct--update-hour');
 			var dynMin = document.querySelector('.ct--update-min');
 			var dynSec = document.querySelector('.ct--update-sec');
-			var min = document.querySelector('#ct--min');
-			var sec = document.querySelector('#ct--sec');
 
-			if ( !Number.isInteger(parseInt(dynMin.value)) || !Number.isInteger(parseInt(dynSec.value))) {
+			if ( !Number.isInteger(parseInt(dynDay.value)) || !Number.isInteger(parseInt(dynHour.value)) || !Number.isInteger(parseInt(dynMin.value)) || !Number.isInteger(parseInt(dynSec.value))) {
 				showAlert('Enter a valid number!');
+				return 0;
+			}
+
+			if (parseInt(dynDay.value) > 365) {
+				showAlert('Day cannot be more than 365!');
+				return 0;
+			}
+
+			if (parseInt(dynHour.value) > 24) {
+				showAlert('Hour cannot be more than 24!');
 				return 0;
 			}
 
@@ -179,14 +189,26 @@ document.onreadystatechange = function () {
 				return 0;
 			}
 
-			if (parseInt(dynMin.value) < 0 || parseInt(dynSec.value) < 0) {
-				showAlert('Minutes/seconds cannot be lesser than 0!');
+			if (parseInt(dynDay.value) < 0 || parseInt(dynHour.value) < 0 || parseInt(dynMin.value) < 0 || parseInt(dynSec.value) < 0) {
+				showAlert('Any value cannot be lesser than 0!');
 				return 0;
 			}
 
 			if ( stopMsg.classList.contains('ct--stopped') ) {
 				showAlert('Timer is already stopped!');
 				return 0;
+			}
+
+			if ( dynDay.value < 10 ) {
+				day.innerHTML = "0" + dynDay.value;
+			} else {
+				day.innerHTML = dynDay.value;
+			}
+
+			if ( dynHour.value < 10 ) {
+				hour.innerHTML = "0" + dynHour.value;
+			} else {
+				hour.innerHTML = dynHour.value;
 			}
 
 			if ( dynMin.value < 10 ) {
@@ -201,6 +223,8 @@ document.onreadystatechange = function () {
 				sec.innerHTML = dynSec.value;
 			}
 
+			dynDay.value = '';
+			dynHour.value = '';
 			dynMin.value = '';
 			dynSec.value = '';
 		});

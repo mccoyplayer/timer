@@ -33,3 +33,7 @@ a {
 	padding-bottom: 10px;
 	border-bottom: 1px solid #bdbdbd;
 }
+
+.page-title {
+	font-size: 2em;
+}
